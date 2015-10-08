@@ -1,0 +1,123 @@
+﻿<controls:MetroWindow x:Class="CalendarSyncPlus.Presentation.Views.Main.ShellView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:converters="clr-namespace:CalendarSyncPlus.Presentation.Converters"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                      
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:viewModels="clr-namespace:CalendarSyncPlus.Application.ViewModels;assembly=CalendarSyncPlus.Application"
+                      xmlns:views="clr-namespace:CalendarSyncPlus.Presentation.Views"
+                      xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                      xmlns:main="clr-namespace:CalendarSyncPlus.Presentation.Views.Main"
+                      Width="650"
+                      Height="750"
+                      AllowsTransparency="True"
+                      BorderBrush="{DynamicResource AccentColorBrush}"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      Icon="../../Resources/icon.ico"
+                      IconTemplate="{DynamicResource IconTemplate}"
+                      NonActiveGlowBrush="{DynamicResource GrayBrush9}"
+                      ResizeMode="CanResizeWithGrip"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      SnapsToDevicePixels="True"
+                      TitleCaps="False"
+                      WindowStartupLocation="CenterScreen"
+                      Title="{lex:LocText Key=ShellView_Window_Title}"
+                      d:DataContext="{d:DesignInstance viewModels:ShellViewModel}"
+                      lex:LocalizeDictionary.DesignCulture="en"
+                      lex:ResxLocalizationProvider.DefaultAssembly="CalendarSyncPlus.Common"
+                      lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+                      mc:Ignorable="d" RightWindowCommandsOverlayBehavior="HiddenTitleBar">
+
+    <controls:MetroWindow.Resources>
+        <Style x:Key="{x:Type ToolTip}"
+               TargetType="ToolTip">
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="HasDropShadow"
+                    Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToolTip">
+                        <Border Name="Border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Margin="0,0,0,50"
+                                Background="White"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <TextBlock Margin="4"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"
+                                       Foreground="Black"
+                                       Text="{Binding Content,
+                                                      RelativeSource={RelativeSource AncestorType={x:Type ToolTip},
+                                                                                     Mode=FindAncestor}}"
+                                       TextWrapping="Wrap" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <converters:PercentageWidthConverter x:Key="PercentageWidthConverter" />
+        <DataTemplate x:Key="IconTemplate">
+            <Rectangle Fill="{DynamicResource AccentSelectedColorBrush}"
+                       Height="25"
+                       Width="25"
+                       Margin="5,0,5,0">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+                                 Visual="{StaticResource appbar_refresh}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout
+                Width="{Binding Width,
+                                             RelativeSource={RelativeSource AncestorType={x:Type main:ShellView}},
+                                             Converter={StaticResource PercentageWidthConverter},
+                                             ConverterParameter=75}"
+                AnimateOnPositionChange="True"
+                Content="{Binding Path=ShellService.SettingsView}"
+                Header="{lex:LocText Key=ShellView_Flyouts_Settings_Header}"
+                IsModal="True"
+                IsOpen="{Binding IsSettingsVisible,
+                                              Mode=TwoWay}"
+                Position="Right"
+                Theme="Adapt" />
+            <controls:Flyout
+                Width="{Binding Width,
+                                             RelativeSource={RelativeSource AncestorType={x:Type main:ShellView}},
+                                             Converter={StaticResource PercentageWidthConverter},
+                                             ConverterParameter=75}"
+                AnimateOnPositionChange="True"
+                Content="{Binding Path=ShellService.AboutView}"
+                Header="{lex:LocText Key=ShellView_Flyouts_About_Header}"
+                IsModal="True"
+                IsOpen="{Binding IsAboutVisible,
+                                              Mode=TwoWay}"
+                Position="Right"
+                Theme="Adapt" />
+            <controls:Flyout
+                Width="{Binding Width,
+                                             RelativeSource={RelativeSource AncestorType={x:Type main:ShellView}},
+                                             Converter={StaticResource PercentageWidthConverter},
+                                             ConverterParameter=75}"
+                AnimateOnPositionChange="True"
+                Content="{Binding Path=ShellService.HelpView}"
+                Header="{lex:LocText Key=ShellView_Flyouts_Help_Header}"
+                IsModal="True"
+                IsOpen="{Binding IsHelpVisible,
+                                              Mode=TwoWay}"
+                Position="Right"
+                Theme="Adapt" />
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+
+    <views:HomeView DataContext="{Binding}" />
+
+</controls:MetroWindow>
