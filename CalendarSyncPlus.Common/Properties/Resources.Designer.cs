@@ -160,7 +160,7 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run CalendarSync+ when computer starts.
+        ///   Looks up a localized string similar to Run PCoMD when computer starts.
         /// </summary>
         public static string AdvancedSettingsView_Checkbox_RunAtStartup_Content {
             get {
@@ -214,7 +214,7 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select this option to start CalendarSync+ when computer starts.
+        ///   Looks up a localized string similar to Select this option to start PCoMD when computer starts.
         /// </summary>
         public static string AdvancedSettingsView_ContentControl_HelpButtonRunAtStartup_Tooltip {
             get {
@@ -1150,7 +1150,7 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Calendar Sync +.
+        ///   Looks up a localized string similar to About PCoMD.
         /// </summary>
         public static string ShellView_AboutButton_ToolTip {
             get {
@@ -1240,7 +1240,7 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configure Calendar Sync +.
+        ///   Looks up a localized string similar to Configure PCoMD.
         /// </summary>
         public static string ShellView_SettingsButton_ToolTip {
             get {
@@ -1258,7 +1258,7 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calendar Sync +.
+        ///   Looks up a localized string similar to PCoMD.
         /// </summary>
         public static string ShellView_Window_Title {
             get {

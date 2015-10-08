@@ -151,7 +151,7 @@
     <value>Use Default Credential</value>
   </data>
   <data name="AdvancedSettingsView_Checkbox_RunAtStartup_Content" xml:space="preserve">
-    <value>Run CalendarSync+ when computer starts</value>
+    <value>Run PCoMD when computer starts</value>
   </data>
   <data name="AdvancedSettingsView_Checkbox_StartMinimized_Content" xml:space="preserve">
     <value>Start minimized</value>
@@ -169,7 +169,7 @@
     <value>Select this option to hide system tray tooltip</value>
   </data>
   <data name="AdvancedSettingsView_ContentControl_HelpButtonRunAtStartup_Tooltip" xml:space="preserve">
-    <value>Select this option to start CalendarSync+ when computer starts</value>
+    <value>Select this option to start PCoMD when computer starts</value>
   </data>
   <data name="AdvancedSettingsView_ContentControl_HelpButtonStartMinimized_Tooltip" xml:space="preserve">
     <value>Always starts application in the minimized to tray state.</value>
@@ -439,7 +439,7 @@
     <value>About</value>
   </data>
   <data name="ShellView_AboutButton_ToolTip" xml:space="preserve">
-    <value>About Calendar Sync +</value>
+    <value>About PCoMD</value>
   </data>
   <data name="ShellView_ExitButton_Content" xml:space="preserve">
     <value>Exit</value>
@@ -469,13 +469,13 @@
     <value>Preferences</value>
   </data>
   <data name="ShellView_SettingsButton_ToolTip" xml:space="preserve">
-    <value>Configure Calendar Sync +</value>
+    <value>Configure PCoMD</value>
   </data>
   <data name="ShellView_WhatsNewButton_Content" xml:space="preserve">
     <value>What's New</value>
   </data>
   <data name="ShellView_Window_Title" xml:space="preserve">
-    <value>Calendar Sync +</value>
+    <value>PCoMD</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>Select Outlook &lt;- Google, to sync your Google calendar to an Outlook calendar</value>
