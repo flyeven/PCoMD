@@ -162,7 +162,7 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
                         : ServiceType.OutlookDesktop;
             }
 
-            if (SyncDirection == SyncDirectionEnum.OutlookGoogleTwoWay)
+            /*if (SyncDirection == SyncDirectionEnum.OutlookGoogleTwoWay)
             {
                 SyncMode = SyncModeEnum.TwoWay;
                 if (Master == ServiceType.OutlookDesktop)
@@ -183,10 +183,10 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
                 }
             }
             else
-            {
+            {*/
                 SyncMode = SyncModeEnum.OneWay;
                 Master = ServiceType.OutlookDesktop;
-            }
+            //}
         }
     }
 }

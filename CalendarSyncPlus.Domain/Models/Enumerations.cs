@@ -69,8 +69,8 @@ namespace CalendarSyncPlus.Domain.Models
     public enum SyncDirectionEnum
     {
         OutlookGoogleOneWay = 0,
-        OutlookGoogleOneWayToSource = 1,
-        OutlookGoogleTwoWay = 2
+        //OutlookGoogleOneWayToSource = 1,
+        //OutlookGoogleTwoWay = 2
     }
 
     public enum SyncModeEnum

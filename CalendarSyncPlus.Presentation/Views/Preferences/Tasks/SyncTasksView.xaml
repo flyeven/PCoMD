@@ -259,14 +259,14 @@
                 <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                 Grid.Column="2"
                                 ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpCalendarSyncMode_Tooltip}" />
-                <TextBlock Text="{localizeExtension:LocText Key=SyncSettingsView_TextBlock_SelectMasterCalendar_Text}"
+                <!--TextBlock Text="{localizeExtension:LocText Key=SyncSettingsView_TextBlock_SelectMasterCalendar_Text}"
                            VerticalAlignment="Center"
                            Margin="2"
                            Grid.Row="1"
                            Visibility="{Binding SelectedProfile.SyncDirection,
                                         Converter={StaticResource EnumToVisibilityConverter},
-                                        ConverterParameter={x:Static models:SyncDirectionEnum.OutlookGoogleTwoWay}}" />
-                <StackPanel Orientation="Horizontal"
+                                        ConverterParameter={x:Static models:SyncDirectionEnum.OutlookGoogleTwoWay}}" /-->
+                <!--StackPanel Orientation="Horizontal"
                             Grid.Row="1"
                             Grid.Column="1"
                             VerticalAlignment="Center"
@@ -287,7 +287,7 @@
                                                    Mode=TwoWay,
                                                     Converter={StaticResource BoolToEnumConverter},
                                                  ConverterParameter=Google}" />
-                </StackPanel>
+                </-->
             </Grid>
         </GroupBox>
         <GroupBox Header="{localizeExtension:LocText Key=SyncSettingsView_GroupBox_SyncRange_Header}"
