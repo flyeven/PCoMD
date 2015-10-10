@@ -376,12 +376,13 @@
                                VerticalAlignment="Center"
                                Margin="2" />
 
+                    <!-- limit to (-1, 30)-->
                     <metroControls:NumericUpDown Grid.Column="1"
                                                  VerticalAlignment="Center"
                                                  Value="{Binding SelectedProfile.SyncSettings.DaysInPast,Mode=TwoWay}"
                                                  Interval="1"
                                                  Margin="2"
-                                                 Maximum="1825"
+                                                 Maximum="1"
                                                  Minimum="0" />
                     <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                     Grid.Column="2"
@@ -397,7 +398,7 @@
                                                  Value="{Binding SelectedProfile.SyncSettings.DaysInFuture,Mode=TwoWay}"
                                                  Interval="1"
                                                  Margin="2"
-                                                 Maximum="1825"
+                                                 Maximum="30"
                                                  Minimum="0" />
                     <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                     Grid.Row="1"
