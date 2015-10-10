@@ -303,14 +303,21 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+
                 <RadioButton
+                    Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFullCalendar_Content}"
+                    Margin="2"
+                    Visibility="Collapsed"
+                    IsChecked="True" />
+                <!--[CFL] force "days in range" option 
+                    RadioButton
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFullCalendar_Content}"
                     Margin="2"
                     Visibility="Collapsed"
                     IsChecked="{Binding SelectedProfile.SyncSettings.SyncRangeType,
                                                    Mode=TwoWay,
                                                     Converter={StaticResource BoolToEnumConverter},
-                                                 ConverterParameter=SyncEntireCalendar}" />
+                                                 ConverterParameter=SyncEntireCalendar}" /-->
                 <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                 Grid.Column="1"
                                 Visibility="Collapsed"
@@ -331,10 +338,16 @@
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFixedDateRange_Content}"
                     Grid.Row="2"
                     Margin="2"
+                             IsChecked="True" />
+                <!-- [CFL] remove fixed days option 
+                    RadioButton
+                    Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFixedDateRange_Content}"
+                    Grid.Row="2"
+                    Margin="2"
                              IsChecked="{Binding SelectedProfile.SyncSettings.SyncRangeType,
                                                    Mode=TwoWay,
                                                     Converter={StaticResource BoolToEnumConverter},
-                                                 ConverterParameter=SyncFixedDateRange}" />
+                                                 ConverterParameter=SyncFixedDateRange}" /-->
                 <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                 Grid.Column="1"
                                 Grid.Row="2"
@@ -391,7 +404,8 @@
                                     Grid.Column="2"
                                     ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpDaysInFuture_Tooltip}" />
                 </Grid>
-                <Grid Grid.Row="3"
+                
+                <!-- [CFL] remove fixed date range Grid Grid.Row="3"
                       Grid.ColumnSpan="2"
                       Visibility="{Binding SelectedProfile.SyncSettings.SyncRangeType,
                     Converter={StaticResource EnumToVisibilityConverter},
@@ -432,7 +446,7 @@
                                     Grid.Row="1"
                                     Grid.Column="2"
                                     ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpEndDate_Tooltip}" />
-                </Grid>
+                </-->
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="2"

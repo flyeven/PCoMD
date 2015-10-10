@@ -33,10 +33,13 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
             return new CalendarSyncSettings
             {
                 SyncRangeType = SyncRangeTypeEnum.SyncRangeInDays,
-                DaysInFuture = 120,
-                DaysInPast = 120,
-                StartDate = DateTime.Today.AddDays(-(120)),
-                EndDate = DateTime.Today.AddDays(120),
+               // [CFL] sets default to (-1, 30)
+                //DaysInFuture = 120,
+                //DaysInPast = 120,
+                DaysInFuture = 30,
+                DaysInPast = 1,
+                StartDate = DateTime.Today.AddDays(-(1)),
+                EndDate = DateTime.Today.AddDays(30),
             };
         }
     }

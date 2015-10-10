@@ -581,16 +581,18 @@ namespace CalendarSyncPlus.Services.Calendars
         {
             startDate = syncProfile.SyncSettings.StartDate.Date;
             endDate = syncProfile.SyncSettings.EndDate.Date;
-            if (syncProfile.SyncSettings.SyncRangeType == SyncRangeTypeEnum.SyncRangeInDays)
-            {
+
+            //[CFL] remove "SyncEntireCalendar" and "SyncFixedDateRange" options
+            //if (syncProfile.SyncSettings.SyncRangeType == SyncRangeTypeEnum.SyncRangeInDays)
+            //{
                 startDate = DateTime.Today.AddDays((-syncProfile.SyncSettings.DaysInPast));
                 endDate = DateTime.Today.AddDays((syncProfile.SyncSettings.DaysInFuture + 1));
-            }
+            /*}
             else if (syncProfile.SyncSettings.SyncRangeType == SyncRangeTypeEnum.SyncEntireCalendar)
             {
                 startDate = DateTime.Parse("1990/01/01 12:00:00 AM");
                 endDate = DateTime.Today.AddYears(10);
-            }
+            }*/
         }
         /// <summary>
         /// 

@@ -19,8 +19,8 @@ namespace CalendarSyncPlus.Domain.Models
     public enum SyncRangeTypeEnum
     {
         SyncRangeInDays = 0,
-        SyncFixedDateRange = 1,
-        SyncEntireCalendar = 2
+        //SyncFixedDateRange = 1,
+        //SyncEntireCalendar = 2
     }
 
     public enum MeetingResponseStatusEnum
