@@ -107,7 +107,7 @@
                                 ContentTemplate="{StaticResource HelpButtonTemplate}"
                                 ToolTip="{localizeExtension:LocText Key=AdvancedSettingsView_ContentControl_CheckForUpdates_Tooltip}" />
 
-
+                <!--[CFL] remove alpha versions check
                 <CheckBox Grid.Row="5"
                           Margin="20,2,2,2"
                           Content="{localizeExtension:LocText Key=AdvancedSettingsView_Checkbox_AlphaCheckForUpdates_Content}"
@@ -119,7 +119,7 @@
                                 Grid.Column="1"
                                 ContentTemplate="{StaticResource HelpButtonTemplate}"
                                 ToolTip="{localizeExtension:LocText Key=AdvancedSettingsView_ContentControl_AlphaCheckForUpdates_Tooltip}" />
-
+                -->
                 <StackPanel Grid.Row="6" Orientation="Horizontal">
                     <RadioButton Margin="2"
                                  Content="{localizeExtension:LocText Key=AdvancedSettingsView_RadioButton_Synchronization_AutoSync_Content}"

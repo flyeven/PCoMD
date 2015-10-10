@@ -114,7 +114,7 @@ namespace CalendarSyncPlus.Application.ViewModels
             IsLatestVersionAvailable = false;
             UpdateText = string.Empty;
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            Task<string>.Factory.StartNew(() => _applicationUpdateService.GetLatestReleaseFromServer(true))
+            Task<string>.Factory.StartNew(() => _applicationUpdateService.GetLatestReleaseFromServer())
                 .ContinueWith(CheckForUpdatesComplete, scheduler);
         }
 

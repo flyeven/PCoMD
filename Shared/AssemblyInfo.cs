@@ -11,5 +11,6 @@
 
 using System.Reflection;
 
-[assembly: AssemblyVersion("1.4.1.9")]
-[assembly: AssemblyFileVersion("1.4.1.9")]
+//[CFL] own version control
+[assembly: AssemblyVersion("0.0.0.1")]
+[assembly: AssemblyFileVersion("0.0.0.1")]
