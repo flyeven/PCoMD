@@ -113,7 +113,12 @@ namespace CalendarSyncPlus.Services
                     result = reader.ReadToEnd();
                 }
             }
+            //[CFL] remove alpha checks
             dynamic obj = JsonConvert.DeserializeObject(result);
+            if (obj.Type == Newtonsoft.Json.Linq.JTokenType.Array)
+            {
+                return obj[0];
+            }
             return obj;
         }
 
@@ -157,7 +162,8 @@ namespace CalendarSyncPlus.Services
                 var versionString = _version.Contains("-")
                     ? _version.Remove(_version.IndexOf("-", StringComparison.InvariantCultureIgnoreCase))
                     : _version;
-                var version = new Version(versionString.Substring(1));
+                //[CFL] version check (no 'v' prefix)
+                var version = new Version(versionString);
                 if (version > new Version(ApplicationInfo.Version))
                 {
                     return true;
