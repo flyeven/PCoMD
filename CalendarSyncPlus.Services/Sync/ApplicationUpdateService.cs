@@ -22,10 +22,6 @@ namespace CalendarSyncPlus.Services
 
         /// <summary>
         /// </summary>
-        private bool _isAlpha;
-
-        /// <summary>
-        /// </summary>
         private string _version;
 
         [ImportingConstructor]
@@ -40,23 +36,14 @@ namespace CalendarSyncPlus.Services
 
         /// <summary>
         /// </summary>
-        public string GetLatestReleaseFromServer(bool includeAlpha)
+        public string GetLatestReleaseFromServer()
         {
             _version = null;
             _downloadLink = null;
-            _isAlpha = false;
             try
             {
                 var obj = GetLatestReleaseTag();
-
-                if (includeAlpha)
-                {
-                    string version1 = obj.tag_name;
-                    obj = GetLatestTag();
-                    string version2 = obj.tag_name;
-                    _isAlpha = IsAlpha(version1, version2);
-                }
-
+                
                 _version = obj.tag_name;
 
                 string body = obj.body;
@@ -83,6 +70,7 @@ namespace CalendarSyncPlus.Services
             return null;
         }
 
+        /* [CFL] remove alpha version check
         private bool IsAlpha(string version1, string version2)
         {
             version1 = version1.Contains("-")
@@ -97,13 +85,17 @@ namespace CalendarSyncPlus.Services
                 return true;
             }
             return false;
-        }
+        }*/
 
         private dynamic GetLatestReleaseTag()
         {
+            //[CFL] own version control
             var request =
-                WebRequest.Create(new Uri("https://api.github.com/repos/thierryLecomte/PCoMD/releases/latest"))
+                WebRequest.Create(new Uri("https://api.github.com/repos/ThierryLecomte/PCoMD/releases"))
                     as HttpWebRequest;
+            //var request =
+            //    WebRequest.Create(new Uri("https://api.github.com/repos/ankeshdave/calendarsyncplus/releases/latest"))
+            //        as HttpWebRequest;
             request.Method = "GET";
             request.ProtocolVersion = HttpVersion.Version11;
             request.ContentType = "application/json";
@@ -121,14 +113,22 @@ namespace CalendarSyncPlus.Services
                     result = reader.ReadToEnd();
                 }
             }
+            //[CFL] remove alpha checks
             dynamic obj = JsonConvert.DeserializeObject(result);
+            if (obj.Type == Newtonsoft.Json.Linq.JTokenType.Array)
+            {
+                return obj[0];
+            }
             return obj;
         }
 
-        private dynamic GetLatestTag()
+        /*private dynamic GetLatestTag()
         {
             var request =
-                WebRequest.Create(new Uri("https://api.github.com/repos/thierryLecomte/PCoMD/releases"))
+                WebRequest.Create(new Uri("https://api.github.com/repos/ankeshdave/calendarsyncplus/releases"))
+                    as HttpWebRequest;
+            var request =
+                WebRequest.Create(new Uri("https://api.github.com/repos/ThierryLecomte/PCoMD/releases"))
                     as HttpWebRequest;
             request.Method = "GET";
             request.ProtocolVersion = HttpVersion.Version11;
@@ -149,7 +149,7 @@ namespace CalendarSyncPlus.Services
             }
             dynamic obj = JsonConvert.DeserializeObject(result);
             return obj[0];
-        }
+        }*/
 
         /// <summary>
         /// </summary>
@@ -162,7 +162,8 @@ namespace CalendarSyncPlus.Services
                 var versionString = _version.Contains("-")
                     ? _version.Remove(_version.IndexOf("-", StringComparison.InvariantCultureIgnoreCase))
                     : _version;
-                var version = new Version(versionString.Substring(1));
+                //[CFL] version check (no 'v' prefix)
+                var version = new Version(versionString);
                 if (version > new Version(ApplicationInfo.Version))
                 {
                     return true;
@@ -181,6 +182,8 @@ namespace CalendarSyncPlus.Services
         /// </returns>
         public string GetNewAvailableVersion()
         {
+            /*
+            [CFL] remove alpha versions check
             try
             {
                 if (_isAlpha && !_version.Contains("-"))
@@ -189,7 +192,7 @@ namespace CalendarSyncPlus.Services
             catch (Exception exception)
             {
                 Logger.Error(exception);
-            }
+            }*/
             return _version;
         }
 

@@ -180,12 +180,13 @@ namespace CalendarSyncPlus.Services.Sync
                     {
                         syncProfile.SyncSettings = CalendarSyncSettings.GetDefault();
                     }
+                    /* [CFL] remove "SyncEntireCalendar" option
                     else if (syncProfile.SyncSettings.SyncRangeType == SyncRangeTypeEnum.SyncEntireCalendar)
                     {
                         syncProfile.SyncSettings.SyncRangeType = SyncRangeTypeEnum.SyncRangeInDays;
                         syncProfile.SyncSettings.DaysInPast = 120;
                         syncProfile.SyncSettings.DaysInFuture = 120;
-                    }
+                    }*/
 
                     if (syncProfile.SyncFrequency == null)
                     {
