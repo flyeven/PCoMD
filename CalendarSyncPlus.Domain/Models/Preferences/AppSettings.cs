@@ -10,7 +10,7 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
         private bool _minimizeToSystemTray;
         private bool _hideSystemTrayTooltip;
         private bool _checkForUpdates;
-        private bool _checkForAlphaReleases;
+        //private bool _checkForAlphaReleases;
         private bool _startMinimized;
         private bool _periodicSyncOn;
         private bool _runApplicationAtSystemStartup;
@@ -36,11 +36,12 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
             set { SetProperty(ref _checkForUpdates, value); }
         }
 
+        /* [CFL] remove alpha versions check
         public bool CheckForAlphaReleases
         {
             get { return _checkForAlphaReleases; }
             set { SetProperty(ref _checkForAlphaReleases, value); }
-        }
+        }*/
 
         public bool IsManualSynchronization
         {
@@ -90,3 +91,4 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
         }
     }
 }
+ 

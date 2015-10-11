@@ -804,10 +804,10 @@ namespace CalendarSyncPlus.Application.ViewModels
                 if (_lastCheckDateTime == null ||
                     DateTime.Now.Subtract(_lastCheckDateTime.GetValueOrDefault()).TotalHours > 6)
                 {
+                    //[CFL] remove alpha versions check
                     Task<string>.Factory.StartNew(
                         () =>
-                            ApplicationUpdateService.GetLatestReleaseFromServer(
-                                Settings.AppSettings.CheckForAlphaReleases))
+                            ApplicationUpdateService.GetLatestReleaseFromServer())
                         .ContinueWith(UpdateContinuationAction);
                 }
             }

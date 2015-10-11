@@ -135,9 +135,10 @@
   <data name="AboutView_Textblock_UseHelpSuggestionComment" xml:space="preserve">
     <value>Please click on 'Help' learn how to use this application.</value>
   </data>
-  <data name="AdvancedSettingsView_Checkbox_AlphaCheckForUpdates_Content" xml:space="preserve">
+  <!-- [CFL] remove alpha versions check 
+    data name="AdvancedSettingsView_Checkbox_AlphaCheckForUpdates_Content" xml:space="preserve">
     <value>Include Alpha Releases</value>
-  </data>
+  </data-->
   <data name="AdvancedSettingsView_Checkbox_CheckForUpdates_Content" xml:space="preserve">
     <value>Check For Updates</value>
   </data>
@@ -156,9 +157,10 @@
   <data name="AdvancedSettingsView_Checkbox_StartMinimized_Content" xml:space="preserve">
     <value>Start minimized</value>
   </data>
-  <data name="AdvancedSettingsView_ContentControl_AlphaCheckForUpdates_Tooltip" xml:space="preserve">
+  <!-- [CFL] remove alpha versions check
+     data name="AdvancedSettingsView_ContentControl_AlphaCheckForUpdates_Tooltip" xml:space="preserve">
     <value>Check for alpha releases of the application</value>
-  </data>
+  </data-->
   <data name="AdvancedSettingsView_ContentControl_CheckForUpdates_Tooltip" xml:space="preserve">
     <value>Select this option to automatically check for latest version of this application</value>
   </data>

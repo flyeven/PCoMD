@@ -243,8 +243,9 @@ namespace CalendarSyncPlus.Application.ViewModels
         {
             SyncRangeTypes = new List<SyncRangeTypeEnum>
             {
-                SyncRangeTypeEnum.SyncEntireCalendar,
-                SyncRangeTypeEnum.SyncFixedDateRange,
+                //[CFL] remove "SyncEntireCalendar" and "SyncFixedDateRange" options
+                //SyncRangeTypeEnum.SyncEntireCalendar,
+                //SyncRangeTypeEnum.SyncFixedDateRange,
                 SyncRangeTypeEnum.SyncRangeInDays
             };
             CalendarSyncModes = new List<SyncDirectionEnum>
