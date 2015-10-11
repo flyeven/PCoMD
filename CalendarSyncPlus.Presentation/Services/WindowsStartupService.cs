@@ -27,7 +27,7 @@ namespace CalendarSyncPlus.Presentation.Services
                 var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
                     true))
             {
-                key.SetValue("CalendarSyncPlusStartup",
+                key.SetValue("PCoMDStartup",
                     "\"" + Assembly.GetExecutingAssembly().Location + "\" " + Constants.Minimized);
             }
         }
@@ -38,7 +38,7 @@ namespace CalendarSyncPlus.Presentation.Services
                 var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
                     true))
             {
-                key.SetValue("CalendarSyncPlusStartup",
+                key.SetValue("PCoMDStartup",
                     "\"" + Assembly.GetExecutingAssembly().Location + "\" " + Constants.Minimized);
             }
         }
@@ -49,7 +49,7 @@ namespace CalendarSyncPlus.Presentation.Services
                 var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
                     true))
             {
-                key.DeleteValue("CalendarSyncPlusStartup", false);
+                key.DeleteValue("PCoMDStartup", false);
             }
         }
 
@@ -59,7 +59,7 @@ namespace CalendarSyncPlus.Presentation.Services
                 var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
                     true))
             {
-                key.DeleteValue("CalendarSyncPlusStartup", false);
+                key.DeleteValue("PCoMDStartup", false);
             }
         }
 

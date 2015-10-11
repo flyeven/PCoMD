@@ -24,7 +24,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock FontWeight="800" Text="Calendar Sync +" />
+                <TextBlock FontWeight="800" Text="PCoMD" />
                 <TextBlock Grid.Row="1"
                            Text="{localizeExtension:LocText Key=SystemtrayNotifierView_TextBlock_TaskBarIcon_MaximizeMessage_ToolTip}"
                            TextWrapping="Wrap" />

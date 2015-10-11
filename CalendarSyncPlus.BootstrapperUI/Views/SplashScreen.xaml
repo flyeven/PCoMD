@@ -55,7 +55,7 @@
                     </EventTrigger>
                 </Rectangle.Triggers>
             </Rectangle>
-            <TextBlock VerticalAlignment="Center" Text="Calendar Sync +" Grid.Column="1" Margin="5"
+            <TextBlock VerticalAlignment="Center" Text="PCoMD" Grid.Column="1" Margin="5"
                        Foreground="{DynamicResource WhiteBrush}" FontSize="48" FontWeight="600" />
         </Grid>
     </Border>

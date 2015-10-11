@@ -255,7 +255,7 @@ namespace CalendarSyncPlus.Domain.Helpers
             }
             catch
             {
-                return "CalendarSyncPlusCalendar";
+                return "PCoMD";
             }
         }
     }

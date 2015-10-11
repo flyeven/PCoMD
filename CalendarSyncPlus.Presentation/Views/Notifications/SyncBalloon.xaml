@@ -25,7 +25,7 @@
                                      Visual="{StaticResource appbar_refresh}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
-                <TextBlock Text="CALENDAR SYNC +" FontWeight="600" Margin="2"
+                <TextBlock Text="PCoMD" FontWeight="600" Margin="2"
                            Foreground="White"
                            VerticalAlignment="Center" />
             </StackPanel>

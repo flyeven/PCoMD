@@ -2,14 +2,14 @@
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <?define VERSION="!(bind.FileVersion.CalendarSyncPlus.exe)"?>
-  <Product Id="*" Name="Calendar Sync +" Language="1033" Version="$(var.VERSION)"
-           Manufacturer="Ankesh Dave &amp; Akanksha Gaur"
+  <?define VERSION="!(bind.FileVersion.PCoMD.exe)"?>
+  <Product Id="*" Name="PCoMD" Language="1033" Version="$(var.VERSION)"
+           Manufacturer="Florins Cédric &amp; Lecomte Thierry"
            UpgradeCode="46e52120-a590-4388-80b1-a1b52ee251d3">
-    <Package Id="*" InstallerVersion="500" Manufacturer="Ankesh Dave &amp; Akanksha Gaur" Platform="x86"
+    <Package Id="*" InstallerVersion="500" Manufacturer="Florins Cédric &amp; Lecomte Thierry" Platform="x86"
              InstallPrivileges="elevated" InstallScope="perMachine"
              Compressed="yes"
-             Description="A utility to synchronize Outlook to Google calendars, vice versa and bidirectional." />
+             Description="A utility to synchronize Outlook to Google calendars." />
     <!--Upgrade Message-->
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed."
                   AllowSameVersionUpgrades="yes" MigrateFeatures="yes" Schedule="afterInstallFinalize"
@@ -24,7 +24,7 @@
       <![CDATA[Installed OR NETFRAMEWORK45]]>
     </Condition>
     <!--Packaging features-->
-    <Feature Id="ProductFeature" Title="Calendar Sync +" Level="1">
+    <Feature Id="ProductFeature" Title="PCoMD" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="UserGuide" />
       <ComponentGroupRef Id="ReleaseNotesGroup" />
@@ -43,31 +43,31 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <!--Install Directory structure-->
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="Calendar Sync +">
+        <Directory Id="INSTALLFOLDER" Name="PCoMD">
           <Directory Id="USERGUIDEFOLDER" Name="UserGuide" />
           <Directory Id="RELEASENOTESFOLDER" Name="ReleaseNotes" />
         </Directory>
       </Directory>
       <!--Shortcut Directory structure-->
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="Calendar Sync +" />
+        <Directory Id="ApplicationProgramsFolder" Name="PCoMD" />
       </Directory>
     </Directory>
     <ComponentGroup Id="ApplicationShortcuts" Directory="ApplicationProgramsFolder">
       <Component Id="ApplicationStartMenuShortcut" Guid="591a8bd1-2779-4e97-808e-defb2ea6a595">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="Calendar Sync +"
-                  Description="A utility to synchronize Outlook to Google calendars, vice versa and bidirectional."
-                  Target="[#CalendarSyncPlus.exe]"
+                  Name="PCoMD"
+                  Description="A utility to synchronize Outlook to Google calendar."
+                  Target="[#PCoMD.exe]"
                   WorkingDirectory="INSTALLFOLDER" Icon="icon.ico" />
         <!--<Shortcut Id="UninstallProduct"
-                          Name="Uninstall Calendar Sync +"
-                          Description="Uninstalls Calendar Sync +"
+                          Name="Uninstall PCoMD"
+                          Description="Uninstalls PCoMD"
                           Target="[System64Folder]msiexec.exe"
                           Arguments="/x [ProductCode]"/>-->
 
         <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
-        <RegistryValue Root="HKCU" Key="Software\Ankesh Dave &amp; Akanksha Gaur\CalendarSyncPlus" Name="installed"
+        <RegistryValue Root="HKCU" Key="Software\Florins Cedric &amp; Lecomte Thierry\PCoMD" Name="installed"
                        Type="integer" Value="00000001" KeyPath="yes" />
       </Component>
 
@@ -75,11 +75,11 @@
         <RegistryValue Root="HKCU" Key="Software\Policies\Microsoft\Security" Name="CheckAdminSettings" Type="integer" Value="00000001" KeyPath="yes"/>
       </Component>-->
       <Component Id="RunAtStartUpRegistry">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run" Name="CalendarSyncPlusStartup"
-                       Type="string" Value="[#CalendarSyncPlus.exe] /MINIMIZED" KeyPath="yes" />
+        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run" Name="PCoMDStartup"
+                       Type="string" Value="[#PCoMD.exe] /MINIMIZED" KeyPath="yes" />
       </Component>
       <Component Id="FirstLaunchRegistry">
-        <RegistryValue Root="HKCU" Key="Software\Ankesh Dave &amp; Akanksha Gaur\CalendarSyncPlus" Name="FirstLaunch"
+        <RegistryValue Root="HKCU" Key="Software\Florins Cedric &amp; Lecomte Thierry\PCoMD" Name="FirstLaunch"
                        Type="integer" Value="00000001" KeyPath="yes" />
       </Component>
     </ComponentGroup>

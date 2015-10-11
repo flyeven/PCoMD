@@ -30,6 +30,8 @@
                    Text="{localizeExtension:LocText Key=AboutView_TextBlock_Contributers}" />
         <TextBlock Text="Ankesh Dave" />
         <TextBlock Text="Akanksha Gaur" />
+        <TextBlock Text="Florins Cédric" />
+        <TextBlock Text="Lecomte Thierry" />
         <TextBlock Margin="0,10,0,0">
             Contact us :
             <Hyperlink Command="{Binding UriCommand}"
