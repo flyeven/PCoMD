@@ -27,7 +27,7 @@ namespace CalendarSyncPlus.Application.ViewModels
         private DelegateCommand _modifyFitlerCommand;
         private LogItem _selectedLogItem;
         private DelegateCommand _selectLogFileCommand;
-        private string _currentFileName = @"%APPDATA%\CalendarSyncPlus\Log\CalSyncPlusLog.xml";
+        private string _currentFileName = @"%APPDATA%\PCoMD\Log\CalSyncPlusLog.xml";
 
         [ImportingConstructor]
         public LogViewModel(ILogView view, IFileDialogService fileDialogService)

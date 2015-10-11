@@ -49,7 +49,7 @@ namespace CalendarSyncPlus.Services.Sync
             Logger = applicationLogger.GetLogger(GetType());
             applicationDataDirectory =
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "CalendarSyncPlus");
+                    "PCoMD");
             settingsFilePath = Path.Combine(applicationDataDirectory, "Settings.xml");
         }
 

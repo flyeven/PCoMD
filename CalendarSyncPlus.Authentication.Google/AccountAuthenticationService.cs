@@ -350,7 +350,7 @@ namespace CalendarSyncPlus.Authentication.Google
         {
             var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                 Environment.SpecialFolderOption.None);
-            var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+            var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
             return AuthenticateAnalyticsOauth(Constants.ClientId, Constants.ClientSecret,
                 accountName, fullPath, ApplicationInfo.ProductName, true);
@@ -360,7 +360,7 @@ namespace CalendarSyncPlus.Authentication.Google
         {
             var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                 Environment.SpecialFolderOption.None);
-            var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+            var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
             return AuthenticateCalendarOauth(Constants.ClientId, Constants.ClientSecret,
                 accountName, fullPath, ApplicationInfo.ProductName, true);
@@ -370,7 +370,7 @@ namespace CalendarSyncPlus.Authentication.Google
         {
             var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                 Environment.SpecialFolderOption.None);
-            var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+            var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
             return AuthenticateTasksOauth(Constants.ClientId, Constants.ClientSecret,
                 accountName, fullPath, ApplicationInfo.ProductName, true);
@@ -380,7 +380,7 @@ namespace CalendarSyncPlus.Authentication.Google
         {
             var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                 Environment.SpecialFolderOption.None);
-            var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+            var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
             return AuthenticateDriveOauth(Constants.ClientId, Constants.ClientSecret,
                 accountName, fullPath, ApplicationInfo.ProductName, true);
@@ -390,7 +390,7 @@ namespace CalendarSyncPlus.Authentication.Google
         {
             var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                 Environment.SpecialFolderOption.None);
-            var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+            var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
             var fileDataStore = new FileDataStore(fullPath, true);
 
             var scopes = GetScopes();
@@ -410,7 +410,7 @@ namespace CalendarSyncPlus.Authentication.Google
             {
                 var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                     Environment.SpecialFolderOption.None);
-                var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+                var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
                 if (Directory.Exists(fullPath))
                 {
@@ -442,7 +442,7 @@ namespace CalendarSyncPlus.Authentication.Google
             {
                 var applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData,
                     Environment.SpecialFolderOption.None);
-                var fullPath = applicationDataPath + @"\CalendarSyncPlus\" + Constants.AuthFolderPath;
+                var fullPath = applicationDataPath + @"\PCoMD\" + Constants.AuthFolderPath;
 
 
                 var initializer = new GoogleAuthorizationCodeFlow.Initializer

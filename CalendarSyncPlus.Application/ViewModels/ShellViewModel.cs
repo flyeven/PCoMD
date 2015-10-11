@@ -761,7 +761,7 @@ namespace CalendarSyncPlus.Application.ViewModels
 
         private void ShowWhatsNewOnStartup()
         {
-            var calendarSyncPlusKey = @"Software\Ankesh Dave & Akanksha Gaur\CalendarSyncPlus";
+            var calendarSyncPlusKey = @"Software\Florins Cedric & Lecomte Thierry\PCoMD";
 
             var key = Registry.CurrentUser.OpenSubKey(calendarSyncPlusKey, RegistryKeyPermissionCheck.ReadWriteSubTree);
             try

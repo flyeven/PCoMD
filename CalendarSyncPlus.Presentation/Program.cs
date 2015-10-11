@@ -26,7 +26,7 @@ namespace CalendarSyncPlus.Presentation
 {
     internal sealed class Program
     {
-        private const string Unique = "6DBA7828-5EDA-4215-9B75-0A7C2E6C9FD9-CalendarSyncPlus";
+        private const string Unique = "6DBA7828-5EDA-4215-9B75-0A7C2E6C9FD9-PCoMD";
 
         [STAThread]
         //[DebuggerNonUserCode]

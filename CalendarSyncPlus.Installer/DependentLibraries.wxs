@@ -91,15 +91,15 @@
       </Component>
 
       <Component>
-        <File Id="CalendarSyncPlus.exe"
-              Name="CalendarSyncPlus.exe"
-              Source="$(var.ProjectDirectory)CalendarSyncPlus.exe"
+        <File Id="PCoMD.exe"
+              Name="PCoMD.exe"
+              Source="$(var.ProjectDirectory)PCoMD.exe"
               KeyPath="yes" />
       </Component>
       <Component>
-        <File Id="CalendarSyncPlus.exe.Config"
-              Name="CalendarSyncPlus.exe.config"
-              Source="$(var.ProjectDirectory)CalendarSyncPlus.exe.config"
+        <File Id="PCoMD.exe.Config"
+              Name="PCoMD.exe.config"
+              Source="$(var.ProjectDirectory)PCoMD.exe.config"
               KeyPath="yes" />
       </Component>
 
