@@ -40,7 +40,7 @@ namespace CalendarSyncPlus.Common.Log
             var applicationDataDirectory =
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "PCoMD", "Log");
-            LogFilePath = Path.Combine(applicationDataDirectory, "CalSyncPlusLog.xml");
+            LogFilePath = Path.Combine(applicationDataDirectory, "PCoMD.xml");
 
             var hierarchy = (Hierarchy) LogManager.GetRepository();
 
