@@ -11,11 +11,5 @@
 
 using System.Reflection;
 
-<<<<<<< HEAD
-[assembly: AssemblyVersion("0.0.1.0")]
-[assembly: AssemblyFileVersion("0.0.1.0")]
-=======
-//[CFL] own version control
-[assembly: AssemblyVersion("0.0.0.3")]
-[assembly: AssemblyFileVersion("0.0.0.3")]
->>>>>>> refs/remotes/origin/master
+[assembly: AssemblyVersion("0.1.1.0")]
+[assembly: AssemblyFileVersion("0.1.1.0")]
