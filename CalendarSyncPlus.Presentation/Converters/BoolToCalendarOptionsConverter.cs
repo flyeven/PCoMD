@@ -30,10 +30,10 @@ namespace CalendarSyncPlus.Presentation.Converters
                 {
                     return target | parameterServiceType;
                 }
-                if (parameterServiceType == CalendarEntryOptionsEnum.Attendees)
-                {
+                /*if (parameterServiceType == CalendarEntryOptionsEnum.Attendees)
+                {*/
                     target &= ~CalendarEntryOptionsEnum.AttendeesToDescription;
-                }
+                //}
                 return target &= ~parameterServiceType;
             }
             catch (Exception)

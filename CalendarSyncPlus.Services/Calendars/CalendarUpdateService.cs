@@ -205,10 +205,12 @@ namespace CalendarSyncPlus.Services.Calendars
             CalendarSyncStatus = StatusHelper.GetMessage(SyncStateEnum.AddingEntries,
                 DestinationCalendarService.CalendarServiceName);
             //Add entries to destination calendar
+
+            //[CFL] remove 'addAttendees' & 'addDescription' options
             var addedAppointments = DestinationCalendarService.AddCalendarEvents(appointmentsToAdd,
-                syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
+                //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
                 syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders),
-                syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
+                //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
                 syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.AttendeesToDescription),
                 destinationCalendarSpecificData)
                 .Result;
@@ -349,10 +351,11 @@ namespace CalendarSyncPlus.Services.Calendars
             CalendarSyncStatus = StatusHelper.GetMessage(SyncStateEnum.AddingEntries, SourceCalendarService.CalendarServiceName);
 
             //Add entries to calendar
+            //[CFL] remove 'addAttendees' & 'addDescription' options
             var addedAppointments = SourceCalendarService.AddCalendarEvents(appointmentsToAdd,
-                syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
+                //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
                 syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders),
-                syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
+                //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
                 syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.AttendeesToDescription),
                 sourceCalendarSpecificData)
                 .Result;
@@ -614,10 +617,11 @@ namespace CalendarSyncPlus.Services.Calendars
                 CalendarSyncStatus = StatusHelper.GetMessage(SyncStateEnum.EntriesToUpdate,
                     CalendarSyncEngine.SourceAppointmentsToUpdate.Count,
                     SourceCalendarService.CalendarServiceName);
+                //[CFL] remove 'addAttendees' & 'addDescription' options
                 var updatedAppointments = SourceCalendarService.UpdateCalendarEvents(CalendarSyncEngine.SourceAppointmentsToUpdate,
-                    syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
+                    //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
                     syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders),
-                    syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
+                    //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
                     syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.AttendeesToDescription),
                     sourceCalendarSpecificData).Result;
                 isSuccess = updatedAppointments.IsSuccess;
@@ -638,10 +642,11 @@ namespace CalendarSyncPlus.Services.Calendars
                 CalendarSyncStatus = StatusHelper.GetMessage(SyncStateEnum.EntriesToUpdate,
                     CalendarSyncEngine.DestAppointmentsToUpdate.Count,
                     DestinationCalendarService.CalendarServiceName);
+                //[CFL] remove 'addAttendees' & 'addDescription' options
                 var updatedAppointments = DestinationCalendarService.UpdateCalendarEvents(CalendarSyncEngine.DestAppointmentsToUpdate,
-                    syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
+                    //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description),
                     syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders),
-                    syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
+                    //syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees),
                     syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.AttendeesToDescription),
                     destinationCalendarSpecificData).Result;
                 isSuccess = updatedAppointments.IsSuccess;

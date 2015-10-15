@@ -272,7 +272,8 @@
                              controls:PasswordBoxHelper.CapsLockWarningToolTip="Caps Lock On" />
             </Grid>
         </GroupBox>
-        <TextBlock Grid.Row="3"
+        <!-- [CFL] remove 'more features to come'
+            TextBlock Grid.Row="3"
                    MaxWidth="300"
                    Margin="0,10,0,0"
                    HorizontalAlignment="Center"
@@ -281,7 +282,7 @@
                    Text="{localizeExtension:LocText Key=AdvancedSettingsView_TextBlock_MoreFeaturesNote_Content}"
                    TextWrapping="Wrap">
             <Hyperlink Command="{Binding UriCommand}" CommandParameter="https://calendarsyncplus.codeplex.com/" />
-        </TextBlock>
+        </-->
     </Grid>
 
 </UserControl>

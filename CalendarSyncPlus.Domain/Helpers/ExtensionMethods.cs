@@ -63,31 +63,32 @@ namespace CalendarSyncPlus.Domain.Helpers
             return true;
         }
 
-        public static void UpdateEntryOptions(this CalendarSyncProfile syncProfile, bool addDescription,
-            bool addReminders,
-            bool addAttendees, bool addAttendeesToDescription, bool addAttachments, bool asAppointments)
+        //[CFL] remove 'addAttendees' & 'addDescription' options
+        public static void UpdateEntryOptions(this CalendarSyncProfile syncProfile,
+            bool addReminders, bool addAttendeesToDescription, bool addAttachments, bool asAppointments)
         {
             syncProfile.CalendarEntryOptions = CalendarEntryOptionsEnum.None;
-            if (addDescription)
+            /*if (addDescription)
             {
                 syncProfile.CalendarEntryOptions = syncProfile.CalendarEntryOptions |
                                                    CalendarEntryOptionsEnum.Description;
-            }
+            }*/
 
             if (addReminders)
             {
                 syncProfile.CalendarEntryOptions = syncProfile.CalendarEntryOptions | CalendarEntryOptionsEnum.Reminders;
             }
 
-            if (addAttendees)
+            /*if (addAttendees)
             {
                 syncProfile.CalendarEntryOptions = syncProfile.CalendarEntryOptions | CalendarEntryOptionsEnum.Attendees;
-                if (addAttendeesToDescription)
+            */
+            if (addAttendeesToDescription)
                 {
                     syncProfile.CalendarEntryOptions = syncProfile.CalendarEntryOptions |
                                                        CalendarEntryOptionsEnum.AttendeesToDescription;
                 }
-            }
+            //}
 
             if (addAttachments)
             {

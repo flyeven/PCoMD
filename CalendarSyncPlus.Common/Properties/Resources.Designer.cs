@@ -573,33 +573,16 @@ namespace CalendarSyncPlus.Common.Properties {
             }
         }
         
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Add Attendees.
-        /// </summary>
-        public static string OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendees_Content {
-            get {
-                return ResourceManager.GetString("OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendees_Content", resourceCulture);
-            }
-        }
-        
+       
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Add Attendees to Description.
         /// </summary>
-        public static string OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendeesDescription_Content {
+        /*public static string OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendeesDescription_Content {
             get {
                 return ResourceManager.GetString("OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendeesDescription_C" +
                         "ontent", resourceCulture);
             }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Add Description.
-        /// </summary>
-        public static string OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddDescription_Content {
-            get {
-                return ResourceManager.GetString("OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddDescription_Content", resourceCulture);
-            }
-        }
+        }*/
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Add events with no recipients as appointments.
@@ -657,32 +640,12 @@ namespace CalendarSyncPlus.Common.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select this option to add attendees to appointment.
-        /// </summary>
-        public static string OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTip {
-            get {
-                return ResourceManager.GetString("OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTi" +
-                        "p", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select this option to add attendees to appointment description instead of TO/CC/BCC fields.
+        ///   Recherche une chaîne localisée semblable à Select this option to add attendees to appointment description.
         /// </summary>
         public static string OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendeesDescription_ToolTip {
             get {
                 return ResourceManager.GetString("OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendeesDescrip" +
                         "tion_ToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select this option to add description to the calendarAppointments.
-        /// </summary>
-        public static string OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddDescription_ToolTip {
-            get {
-                return ResourceManager.GetString("OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddDescription_Tool" +
-                        "Tip", resourceCulture);
             }
         }
         

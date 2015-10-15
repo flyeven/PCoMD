@@ -25,18 +25,19 @@ namespace CalendarSyncPlus.SyncEngine.Helpers
             appointment.MeetingStatus = otherAppointment.MeetingStatus;
 
 
-            if (calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description))
+            // //[CFL] remove 'addAttendees' & 'addDescription' options
+            /*if (calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description))
             {
                 appointment.Description = otherAppointment.ParseDescription();
-            }
+            }*/
 
-            if (calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees)
+            /*if (calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Attendees)
                 && !calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.AttendeesToDescription))
             {
                 appointment.RequiredAttendees = otherAppointment.RequiredAttendees.Select(t => t).ToList();
                 appointment.OptionalAttendees = otherAppointment.OptionalAttendees.Select(t => t).ToList();
                 appointment.Organizer = otherAppointment.Organizer;
-            }
+            }*/
 
             if (calendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders))
             {

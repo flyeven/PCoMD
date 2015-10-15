@@ -61,13 +61,14 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
 
         #endregion
 
+
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         #region Private Methods
-        private bool AddEvents(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder,
-            bool addAttendees, bool attendeesToDescription, List<Appointment> addedAppointment)
+        private bool AddEvents(List<Appointment> calendarAppointments,bool addReminder,
+           bool attendeesToDescription, List<Appointment> addedAppointment)
         {
-            var wrapper = AddEventsToOutlook(calendarAppointments, addDescription, addReminder,
-                addAttendees, attendeesToDescription, addedAppointment);
+            var wrapper = AddEventsToOutlook(calendarAppointments, addReminder,
+                attendeesToDescription, addedAppointment);
 
             if (!wrapper.WaitForApplicationQuit)
             {
@@ -81,18 +82,18 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             return wrapper.Success;
         }
 
+
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         /// <summary>
         /// </summary>
         /// <param name="calendarAppointments"></param>
-        /// <param name="addDescription"></param>
         /// <param name="addReminder"></param>
-        /// <param name="addAttendees"></param>
         /// <param name="attendeesToDescription"></param>
         /// <param name="addedAppointment"></param>
         /// <returns>
         /// </returns>
-        private OutlookAppointmentsWrapper AddEventsToOutlook(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription, List<Appointment> addedAppointment)
+        private OutlookAppointmentsWrapper AddEventsToOutlook(List<Appointment> calendarAppointments,
+            bool addReminder, bool attendeesToDescription, List<Appointment> addedAppointment)
         {
             var disposeOutlookInstances = false;
             Application application = null;
@@ -133,8 +134,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
                     {
                         continue;
                     }
-                    var newAppointment = AddAppointment(addDescription, addReminder, addAttendees,
-                        attendeesToDescription, appItem,
+                    var newAppointment = AddAppointment(addReminder, attendeesToDescription, appItem,
                         calendarAppointment, id);
                     addedAppointment.Add(newAppointment);
                     Marshal.FinalReleaseComObject(appItem);
@@ -188,16 +188,15 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             };
         }
 
+
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         /// <summary>
         /// </summary>
-        /// <param name="addDescription"></param>
         /// <param name="addReminder"></param>
-        /// <param name="addAttendees"></param>
         /// <param name="attendeesToDescription"></param>
         /// <param name="appItem"></param>
         /// <param name="calendarAppointment"></param>
-        private Appointment AddAppointment(bool addDescription, bool addReminder, bool addAttendees,
-            bool attendeesToDescription, AppointmentItem appItem,
+        private Appointment AddAppointment( bool addReminder, bool attendeesToDescription, AppointmentItem appItem,
             Appointment calendarAppointment, string id)
         {
             Recipients recipients = null;
@@ -233,10 +232,12 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
                 appItem.End = calendarAppointment.EndTime.GetValueOrDefault();
 
 
-                appItem.Body = calendarAppointment.GetDescriptionData(addDescription, attendeesToDescription);
+                appItem.Body = calendarAppointment.GetDescriptionData(attendeesToDescription);
                 
                 Recipient organizer = null;
-                if (addAttendees && !attendeesToDescription)
+                //[CFL] if not added to description, don't add attendees
+                /*
+                if (!attendeesToDescription)
                 {
                     if (calendarAppointment.RequiredAttendees != null)
                     {
@@ -279,8 +280,9 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
                             }
                         });
                     }
-                }
-                else if (SetOrganizer && calendarAppointment.Organizer != null)
+                }*/
+                //else 
+                if (SetOrganizer && calendarAppointment.Organizer != null)
                 {
                     var recipient =
                                 appItem.Recipients.Add(string.Format("{0}<{1}>", calendarAppointment.Organizer.Name, calendarAppointment.Organizer.Email));
@@ -455,12 +457,12 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             };
         }
 
-        private bool UpdateEvents(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder,
-            bool addAttendees, bool attendeesToDescription, List<Appointment> updatedAppointments)
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        private bool UpdateEvents(List<Appointment> calendarAppointments, bool addReminder,
+            bool attendeesToDescription, List<Appointment> updatedAppointments)
         {
-            var wrapper = UpdateEventsToOutlook(calendarAppointments, addDescription, addReminder,
-                addAttendees, attendeesToDescription, updatedAppointments);
+            var wrapper = UpdateEventsToOutlook(calendarAppointments, addReminder,
+                attendeesToDescription, updatedAppointments);
 
             if (!wrapper.WaitForApplicationQuit)
             {
@@ -474,18 +476,17 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             return wrapper.Success;
         }
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         /// <summary>
         /// </summary>
         /// <param name="calendarAppointments"></param>
-        /// <param name="addDescription"></param>
         /// <param name="addReminder"></param>
-        /// <param name="addAttendees"></param>
         /// <param name="attendeesToDescription"></param>
         /// <param name="updatedAppointments"></param>
         /// <returns>
         /// </returns>
-        private OutlookAppointmentsWrapper UpdateEventsToOutlook(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription, List<Appointment> updatedAppointments)
+        private OutlookAppointmentsWrapper UpdateEventsToOutlook(List<Appointment> calendarAppointments,
+            bool addReminder, bool attendeesToDescription, List<Appointment> updatedAppointments)
         {
             var disposeOutlookInstances = false;
             Application application = null;
@@ -530,7 +531,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
                         {
                             continue;
                         }
-                        var success = UpdateAppointment(addDescription, addReminder, addAttendees, attendeesToDescription, appItem,
+                        var success = UpdateAppointment(addReminder, attendeesToDescription, appItem,
                             calendarAppointment);
                         if (success)
                         {
@@ -591,8 +592,8 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             };
         }
 
-        private bool UpdateAppointment(bool addDescription, bool addReminder, bool addAttendees,
-            bool attendeesToDescription, AppointmentItem appItem,
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        private bool UpdateAppointment(bool addReminder, bool attendeesToDescription, AppointmentItem appItem,
             Appointment calendarAppointment)
         {
             Recipients recipients = null;
@@ -616,12 +617,14 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
 
                 appItem.Start = calendarAppointment.StartTime.GetValueOrDefault();
                 appItem.End = calendarAppointment.EndTime.GetValueOrDefault();
-                if (addDescription)
+
+                // [CFL] remove the 'addDescription' & 'addAttendees' options
+                /*if (addDescription)
                 {
                     appItem.Body = calendarAppointment.Description;
-                }
+                }*/
 
-                if (addAttendees && !attendeesToDescription)
+                /*if (addAttendees && !attendeesToDescription)
                 {
                     recipients = appItem.Recipients;
                     if (calendarAppointment.RequiredAttendees != null)
@@ -651,7 +654,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
                             }
                         });
                     }
-                }
+                }*/
                 
 
                 if (addReminder)
@@ -1237,9 +1240,10 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
 
         #endregion
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         #region IOutlookCalendarService Members
-        public async Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, bool addDescription,
-          bool addReminder, bool addAttendees, bool attendeesToDescription,
+        public async Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, 
+          bool addReminder, bool attendeesToDescription,
           IDictionary<string, object> calendarSpecificData)
         {
             var updateAppointments = new AppointmentsWrapper();
@@ -1253,7 +1257,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             var result = await
                 Task<bool>.Factory.StartNew(
                     () =>
-                        UpdateEvents(calendarAppointments, addDescription, addReminder, addAttendees,
+                        UpdateEvents(calendarAppointments, addReminder, 
                             attendeesToDescription, updateAppointments));
             updateAppointments.IsSuccess = result;
             return updateAppointments;
@@ -1403,10 +1407,9 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             }
         }
 
-
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         public async Task<AppointmentsWrapper> AddCalendarEvents(List<Appointment> calendarAppointments,
-            bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription,
+            bool addReminder, bool attendeesToDescription,
             IDictionary<string, object> calendarSpecificData)
         {
             var addedAppointments = new AppointmentsWrapper();
@@ -1418,7 +1421,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             CheckCalendarSpecificData(calendarSpecificData);
 
             var result = await
-                Task<bool>.Factory.StartNew(() => AddEvents(calendarAppointments, addDescription, addReminder, addAttendees,
+                Task<bool>.Factory.StartNew(() => AddEvents(calendarAppointments, addReminder, 
                             attendeesToDescription, addedAppointments));
 
             addedAppointments.IsSuccess = result;
@@ -1472,7 +1475,7 @@ namespace CalendarSyncPlus.OutlookServices.Calendar
             if (appointments != null)
             {
                 appointments.ForEach(t => t.ExtendedProperties = new Dictionary<string, string>());
-                var success = await UpdateCalendarEvents(appointments, false, false, false, false, calendarSpecificData);
+                var success = await UpdateCalendarEvents(appointments, false, false, calendarSpecificData);
                 return success.IsSuccess;
             }
             return false;

@@ -281,12 +281,12 @@
   <data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendeesDescription_Content" xml:space="preserve">
     <value>Add Attendees to Description</value>
   </data>
-  <data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendees_Content" xml:space="preserve">
+  <!--data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendees_Content" xml:space="preserve">
     <value>Add Attendees</value>
-  </data>
-  <data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddDescription_Content" xml:space="preserve">
+  </data-->
+  <!--data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddDescription_Content" xml:space="preserve">
     <value>Add Description</value>
-  </data>
+  </data-->
   <data name="OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddEventsAsAppointment_Content" xml:space="preserve">
     <value>Add events with no recipients as appointments</value>
   </data>
@@ -306,14 +306,15 @@
     <value>Update Existing Entries</value>
   </data>
   <data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendeesDescription_ToolTip" xml:space="preserve">
-    <value>Select this option to add attendees to appointment description instead of TO/CC/BCC fields</value>
+    <!--value>Select this option to add attendees to appointment description instead of TO/CC/BCC fields</value-->
+    <value>Select this option to add attendees to appointment description</value>
   </data>
-  <data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTip" xml:space="preserve">
+  <!--data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTip" xml:space="preserve">
     <value>Select this option to add attendees to appointment</value>
-  </data>
-  <data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddDescription_ToolTip" xml:space="preserve">
+  </data-->
+  <!--data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddDescription_ToolTip" xml:space="preserve">
     <value>Select this option to add description to the calendarAppointments</value>
-  </data>
+  </data-->
   <data name="OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddEventsAsAppointment_ToolTip" xml:space="preserve">
     <value>Select this option to add events from Google without recipients as appointments in outlook.</value>
   </data>

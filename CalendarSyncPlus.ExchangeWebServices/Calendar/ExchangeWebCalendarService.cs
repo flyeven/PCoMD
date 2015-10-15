@@ -35,8 +35,9 @@ namespace CalendarSyncPlus.ExchangeWebServices.Calendar
 
         public ILog Logger { get; set; }
 
-        public Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription,
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        public Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, 
+            bool addReminder, bool attendeesToDescription,
             IDictionary<string, object> calendarSpecificData)
         {
             throw new NotImplementedException();
@@ -265,10 +266,9 @@ namespace CalendarSyncPlus.ExchangeWebServices.Calendar
             return outlookAppointments;
         }
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         public Task<AppointmentsWrapper> AddCalendarEvents(List<Appointment> calendarAppointments,
-            bool addDescription,
-            bool addReminder, bool addAttendees,
-            bool attendeesToDescription, IDictionary<string, object> calendarSpecificData)
+            bool addReminder, bool attendeesToDescription, IDictionary<string, object> calendarSpecificData)
         {
             throw new NotImplementedException();
         }
@@ -326,10 +326,12 @@ namespace CalendarSyncPlus.ExchangeWebServices.Calendar
             var endDate = DateTime.Today.AddDays(10 * 365);
             var appointments =
                 await GetCalendarEventsInRangeAsync(startDate, endDate, calendarSpecificData);
+
             if (appointments != null)
             {
                 appointments.ForEach(t => t.ExtendedProperties = new Dictionary<string, string>());
-                var success = await UpdateCalendarEvents(appointments, false,false,false,false, calendarSpecificData);
+                //[CFL] remove 'addAttendees' & 'addDescription' options
+                var success = await UpdateCalendarEvents(appointments, false,false, calendarSpecificData);
                 return success.IsSuccess;
             }
             return false;

@@ -75,7 +75,7 @@ namespace CalendarSyncPlus.Domain.Models.Preferences
                     SetOrganizer = true
                 },
                 CalendarEntryOptions =
-                    CalendarEntryOptionsEnum.Description | CalendarEntryOptionsEnum.Attendees |
+                    //CalendarEntryOptionsEnum.Description | CalendarEntryOptionsEnum.Attendees |
                     CalendarEntryOptionsEnum.AttendeesToDescription |
                     CalendarEntryOptionsEnum.Reminders | CalendarEntryOptionsEnum.AsAppointments,
                     SyncDirection = SyncDirectionEnum.OutlookGoogleOneWay,

@@ -55,11 +55,12 @@ namespace CalendarSyncPlus.Domain.Models
     }
 
     [Flags]
+    //[CFL] remove 'addAttendees' & 'addDescription' options
     public enum CalendarEntryOptionsEnum
     {
         None = 0,
-        Description = 1,
-        Attendees = 2,
+        //Description = 1,
+        //Attendees = 2,
         AttendeesToDescription = 4,
         Reminders = 8,
         Attachments = 16,
@@ -73,6 +74,7 @@ namespace CalendarSyncPlus.Domain.Models
         //OutlookGoogleTwoWay = 2
     }
 
+    //[CFL] : always OneWay TODO
     public enum SyncModeEnum
     {
         OneWay,

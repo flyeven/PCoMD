@@ -17,15 +17,16 @@ namespace CalendarSyncPlus.Services.Calendars.Interfaces
         Task<AppointmentsWrapper> GetCalendarEventsInRangeAsync(DateTime startDate, DateTime endDate,
             IDictionary<string, object> calendarSpecificData);
 
-        Task<AppointmentsWrapper> AddCalendarEvents(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription,
-            IDictionary<string, object> calendarSpecificData);
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        Task<AppointmentsWrapper> AddCalendarEvents(List<Appointment> calendarAppointments, 
+            bool addReminder, bool attendeesToDescription,IDictionary<string, object> calendarSpecificData);
 
         void CheckCalendarSpecificData(IDictionary<string, object> calendarSpecificData);
 
+
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, 
-            bool addDescription, bool addReminder, bool addAttendees, bool attendeesToDescription,
-            IDictionary<string, object> calendarSpecificData);
+            bool addReminder, bool attendeesToDescription, IDictionary<string, object> calendarSpecificData);
 
         Task<bool> ClearCalendar(IDictionary<string, object> calendarSpecificData);
 

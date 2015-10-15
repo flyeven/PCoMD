@@ -70,8 +70,9 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
 
         #endregion
 
-        public async Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription,
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        public async Task<AppointmentsWrapper> UpdateCalendarEvents(List<Appointment> calendarAppointments, 
+            bool addReminder, bool attendeesToDescription,
             IDictionary<string, object> calendarSpecificData)
         {
             var updatedAppointments = new AppointmentsWrapper();
@@ -112,8 +113,7 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                         }
 
                         var appointment = calendarAppointments[i];
-                        var calendarEvent = CreateUpdatedGoogleCalendarEvent(appointment, addDescription, addReminder,
-                            addAttendees, attendeesToDescription);
+                        var calendarEvent = CreateUpdatedGoogleCalendarEvent(appointment, addReminder, attendeesToDescription);
                         var updateRequest = calendarService.Events.Update(calendarEvent,
                             CalendarId, calendarEvent.Id);
                         
@@ -162,18 +162,15 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
 
         #region Private Methods
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         /// <summary>
         /// </summary>
         /// <param name="calendarAppointment"></param>
-        /// <param name="addDescription"></param>
         /// <param name="addReminder"></param>
-        /// <param name="addAttendees"></param>
         /// <param name="attendeesToDescription"></param>
         /// <returns>
         /// </returns>
-        private Event CreateUpdatedGoogleCalendarEvent(Appointment calendarAppointment, bool addDescription,
-            bool addReminder,
-            bool addAttendees, bool attendeesToDescription)
+        private Event CreateUpdatedGoogleCalendarEvent(Appointment calendarAppointment, bool addReminder, bool attendeesToDescription)
         {
             //Create Event
             var googleEvent = new Event
@@ -181,8 +178,11 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 Id = calendarAppointment.AppointmentId,
                 Start = new EventDateTime(),
                 End = new EventDateTime(),
-                Summary = calendarAppointment.Subject,
-                Description = calendarAppointment.GetDescriptionData(addDescription, attendeesToDescription),
+                //[CFL] remove appointment subject & description
+                //Summary = calendarAppointment.Subject,
+                // Description = calendarAppointment.GetDescriptionData(addDescription, attendeesToDescription),
+                Summary = "",
+                Description = "",
                 Location = calendarAppointment.Location,
                 Visibility = calendarAppointment.Privacy,
                 Transparency = (calendarAppointment.BusyStatus == BusyStatusEnum.Free) ? "transparent" : "opaque"
@@ -244,38 +244,46 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 googleEvent.Attendees = new List<EventAttendee>();
             }
 
-            if (addAttendees && !attendeesToDescription)
+            // [CFL] no real attendees
+            /*if (addAttendees && !attendeesToDescription)
             {
                 //Add Required Attendees
                 AddEventAttendees(calendarAppointment.RequiredAttendees, googleEvent, false);
 
                 //Add optional Attendees
                 AddEventAttendees(calendarAppointment.OptionalAttendees, googleEvent, true);
-            }
+            }*/
+
             //Add Organizer
-            if (calendarAppointment.Organizer != null && calendarAppointment.Organizer.Email.IsValidEmailAddress())
-            {
-                googleEvent.Organizer = new Event.OrganizerData
+            //[CFL remove emails]
+            //if (calendarAppointment.Organizer != null && calendarAppointment.Organizer.Email.IsValidEmailAddress())
+            if (calendarAppointment.Organizer != null)
                 {
-                    DisplayName = calendarAppointment.Organizer.Name,
-                    Email = calendarAppointment.Organizer.Email
-                };
+                    googleEvent.Organizer = new Event.OrganizerData
+                    {
+                        DisplayName = calendarAppointment.Organizer.Name,
+                        //[CFL] remove emails
+                        // TODO put email in Name if empty
+                        //Email = calendarAppointment.Organizer.Email
+                    };
             }
 
             return googleEvent;
         }
 
-
-        private Event CreateGoogleCalendarEvent(Appointment calendarAppointment, bool addDescription, bool addReminder,
-            bool addAttendees, bool attendeesToDescription)
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        private Event CreateGoogleCalendarEvent(Appointment calendarAppointment, bool addReminder, bool attendeesToDescription)
         {
             //Create Event
             var googleEvent = new Event
             {
                 Start = new EventDateTime(),
                 End = new EventDateTime(),
-                Summary = calendarAppointment.Subject,
-                Description = calendarAppointment.GetDescriptionData(addDescription, attendeesToDescription),
+                //[CFL] remove appointment subject & description
+                // TODO remove 'addDescription' flag
+                //Summary = calendarAppointment.Subject,
+                Description = calendarAppointment.GetDescriptionData(attendeesToDescription),
+                Summary = "",
                 Location = calendarAppointment.Location,
                 Visibility = calendarAppointment.Privacy,
                 Transparency = (calendarAppointment.BusyStatus == BusyStatusEnum.Free) ? "transparent" : "opaque",
@@ -335,21 +343,26 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 googleEvent.Attendees = new List<EventAttendee>();
             }
 
-            if (addAttendees && !attendeesToDescription)
+            // [CFL] remove the 'addDescription' & 'addAttendees' options
+            /*if (addAttendees && !attendeesToDescription)
             {
                 //Add Required Attendees
                 AddEventAttendees(calendarAppointment.RequiredAttendees, googleEvent, false);
 
                 //Add optional Attendees
                 AddEventAttendees(calendarAppointment.OptionalAttendees, googleEvent, true);
-            }
+            }*/
+
             //Add Organizer
-            if (calendarAppointment.Organizer != null && calendarAppointment.Organizer.Email.IsValidEmailAddress())
+            //[CFL remove organizer's email]
+            // TODO: if Name is empty, take email (without domain)
+            //if (calendarAppointment.Organizer != null && calendarAppointment.Organizer.Email.IsValidEmailAddress())
+            if (calendarAppointment.Organizer != null)
             {
                 googleEvent.Organizer = new Event.OrganizerData
                 {
                     DisplayName = calendarAppointment.Organizer.Name,
-                    Email = calendarAppointment.Organizer.Email
+                    //Email = calendarAppointment.Organizer.Email
                 };
             }
 
@@ -460,7 +473,8 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 appointment.Organizer = new Attendee
                 {
                     Name = googleEvent.Organizer.DisplayName,
-                    Email = googleEvent.Organizer.Email
+                    //[CFL] remove emails
+                    //Email = googleEvent.Organizer.Email
                 };
             }
 
@@ -574,9 +588,9 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
             return localCalendarList;
         }
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         public async Task<AppointmentsWrapper> AddCalendarEvents(List<Appointment> calendarAppointments,
-            bool addDescription,
-            bool addReminder, bool addAttendees, bool attendeesToDescription,
+            bool addReminder, bool attendeesToDescription,
             IDictionary<string, object> calendarSpecificData)
         {
             var addedAppointments = new AppointmentsWrapper();
@@ -603,7 +617,7 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 {
                     //Split the list of calendarAppointments by 1000 per list
                     var appts =
-                        await AddCalendarEventsInternal(calendarAppointments, addDescription, addReminder, addAttendees,
+                        await AddCalendarEventsInternal(calendarAppointments, addReminder, 
                             attendeesToDescription, calendarService, errorList);
                     addedAppointments.AddRange(appts);
                     if (errorList.Count > 0)
@@ -611,7 +625,7 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                         var remaningList = errorList.Select(CreateAppointmentWithoutAttendees).ToList();
                         errorList.Clear();
 
-                        appts = await AddCalendarEventsInternal(remaningList, addDescription, addReminder, addAttendees,
+                        appts = await AddCalendarEventsInternal(remaningList, addReminder, 
                             attendeesToDescription, calendarService, errorList);
                         addedAppointments.AddRange(appts);
                     }
@@ -635,10 +649,9 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
             return appointment;
         }
 
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
         private async Task<List<Appointment>> AddCalendarEventsInternal(List<Appointment> calendarAppointments,
-            bool addDescription, bool addReminder,
-            bool addAttendees,
-            bool attendeesToDescription, CalendarService calendarService,
+            bool addReminder, bool attendeesToDescription, CalendarService calendarService,
             Dictionary<int, Appointment> errorList)
         {
             var addedEvents = new List<Appointment>();
@@ -654,9 +667,7 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
                 }
 
                 var appointment = calendarAppointments[i];
-                var calendarEvent = CreateGoogleCalendarEvent(appointment, addDescription, addReminder,
-                    addAttendees,
-                    attendeesToDescription);
+                var calendarEvent = CreateGoogleCalendarEvent(appointment, addReminder, attendeesToDescription);
                 var insertRequest = calendarService.Events.Insert(calendarEvent,
                     CalendarId);
                 insertRequest.MaxAttendees = 10000;
@@ -828,7 +839,7 @@ namespace CalendarSyncPlus.GoogleServices.Calendar
             if (appointments != null)
             {
                 appointments.ForEach(t => t.ExtendedProperties = new Dictionary<string, string>());
-                var success = await UpdateCalendarEvents(appointments, true, true,true, false, calendarSpecificData);
+                var success = await UpdateCalendarEvents(appointments, true, true, calendarSpecificData);
                 return success.IsSuccess;
             }
             return false;

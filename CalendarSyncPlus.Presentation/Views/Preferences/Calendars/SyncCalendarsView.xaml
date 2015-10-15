@@ -237,7 +237,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <GroupBox Header="{localizeExtension:LocText Key=SyncSettingsView_GroupBox_CalendarSyncDirection_Header}">
+        <!-- [CFL] remove calendar direction setting block
+            GroupBox Header="{localizeExtension:LocText Key=SyncSettingsView_GroupBox_CalendarSyncDirection_Header}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -259,14 +260,14 @@
                 <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                 Grid.Column="2"
                                 ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpCalendarSyncMode_Tooltip}" />
-                <!--TextBlock Text="{localizeExtension:LocText Key=SyncSettingsView_TextBlock_SelectMasterCalendar_Text}"
+                <TextBlock Text="{localizeExtension:LocText Key=SyncSettingsView_TextBlock_SelectMasterCalendar_Text}"
                            VerticalAlignment="Center"
                            Margin="2"
                            Grid.Row="1"
                            Visibility="{Binding SelectedProfile.SyncDirection,
                                         Converter={StaticResource EnumToVisibilityConverter},
-                                        ConverterParameter={x:Static models:SyncDirectionEnum.OutlookGoogleTwoWay}}" /-->
-                <!--StackPanel Orientation="Horizontal"
+                                        ConverterParameter={x:Static models:SyncDirectionEnum.OutlookGoogleTwoWay}}" />
+                <StackPanel Orientation="Horizontal"
                             Grid.Row="1"
                             Grid.Column="1"
                             VerticalAlignment="Center"
@@ -287,9 +288,9 @@
                                                    Mode=TwoWay,
                                                     Converter={StaticResource BoolToEnumConverter},
                                                  ConverterParameter=Google}" />
-                </-->
+                </>
             </Grid>
-        </GroupBox>
+        </-->
         <GroupBox Header="{localizeExtension:LocText Key=SyncSettingsView_GroupBox_SyncRange_Header}"
                   Grid.Row="1">
             <Grid>
@@ -303,11 +304,12 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <RadioButton
+                <!-- [CFL] force "days in range" option 
+                    RadioButton
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFullCalendar_Content}"
                     Margin="2"
                     Visibility="Collapsed"
-                    IsChecked="True" />
+                    IsChecked="True" /-->
                 <!-- [CFL] force "days in range" option 
                   RadioButton
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFullCalendar_Content}"
@@ -321,6 +323,8 @@
                                 Grid.Column="1"
                                 Visibility="Collapsed"
                                 ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpSyncFullCalendar_Tooltip}" />
+                <!-- [CFL] remove fixed days option
+                
                 <RadioButton
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncDaysInRange_Content}"
                     Grid.Row="1"
@@ -332,7 +336,7 @@
                 <ContentControl ContentTemplate="{DynamicResource HelpButtonTemplate}"
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpSyncDaysInRange_Tooltip}" />
+                                ToolTip="{localizeExtension:LocText Key=SyncSettingsView_ContentControl_HelpSyncDaysInRange_Tooltip}" /-->
                 <!-- [CFL] remove fixed days option
                 RadioButton
                     Content="{localizeExtension:LocText Key=SyncSettingsView_RadioButton_SyncFixedDateRange_Content}"

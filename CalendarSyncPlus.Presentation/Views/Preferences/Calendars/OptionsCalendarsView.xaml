@@ -98,7 +98,10 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <CheckBox Margin="2"
+
+                <!-- [CFL] remove 'addAttendees' & 'addDescription' options
+        
+                    CheckBox Margin="2"
                           Content="{localizeExtension:LocText Key=OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddDescription_Content}"
                           IsChecked="{Binding SelectedProfile.CalendarEntryOptions,
                                               Converter={StaticResource CalendarOptionsToBoolConverter},
@@ -122,16 +125,16 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 ContentTemplate="{DynamicResource HelpButtonTemplate}"
-                                ToolTip="{localizeExtension:LocText Key=OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTip}" />
+                                ToolTip="{localizeExtension:LocText Key=OptionsSettingsView_ContentControl_DestinationCalendarOptions_AddAttendees_ToolTip}" /-->
                 <CheckBox Grid.Row="2"
-                          Margin="20,2,2,2"
+                          Margin="2,2,2,2"
                           Content="{localizeExtension:LocText Key=OptionsSettingsView_CheckBox_DestinationCalendarOptions_AddAttendeesDescription_Content}"
                           IsChecked="{Binding SelectedProfile.CalendarEntryOptions,
                                               Converter={StaticResource CalendarOptionsToBoolConverter},
                                               ConverterParameter={x:Static models:CalendarEntryOptionsEnum.AttendeesToDescription},
                                               Mode=TwoWay,
                                               UpdateSourceTrigger=PropertyChanged}"
-                          IsEnabled="{Binding IsChecked,ElementName=AddAttendeesCheckBox}" />
+                          IsEnabled="True" />
                 <ContentControl Margin="2"
                                 Grid.Row="2"
                                 Grid.Column="1"

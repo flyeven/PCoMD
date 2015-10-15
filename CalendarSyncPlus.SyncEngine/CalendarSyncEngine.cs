@@ -91,8 +91,8 @@ namespace CalendarSyncPlus.SyncEngine
             List<Appointment> destAppointmentsToUpdate, List<Appointment> sourceAppointmentsToUpdate,
             List<Appointment> destOrphanEntries)
         {
-            var addDescription =
-                syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description);
+            //var addDescription =
+            //    syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Description);
             var addReminders =
                 syncProfile.CalendarEntryOptions.HasFlag(CalendarEntryOptionsEnum.Reminders);
             var addAttendeesToDescription =
@@ -171,7 +171,7 @@ namespace CalendarSyncPlus.SyncEngine
                         {
                             //If any entry is found in source appointment and its contents are not equal to source appointment,
                             //If an entry is found and i same, ignore
-                            if (!CompareAppointments(destAppointment, sourceAppointment, addDescription,
+                            if (!CompareAppointments(destAppointment, sourceAppointment, true,
                                 addReminders, addAttendeesToDescription))
                             {
                                 if (sourceAppointment.LastModified.HasValue && destAppointment.LastModified.HasValue)
@@ -198,7 +198,7 @@ namespace CalendarSyncPlus.SyncEngine
                     if (sourceAppointment != null)
                     {
                         //If any entry is found in source appointment and its contents are not equal to source appointment
-                        if (!CompareAppointments(destAppointment, sourceAppointment, addDescription, addReminders,
+                        if (!CompareAppointments(destAppointment, sourceAppointment, true, addReminders,
                             addAttendeesToDescription))
                         {
                             destAppointment.CopyDetail(sourceAppointment, syncProfile.CalendarEntryOptions);
@@ -209,7 +209,7 @@ namespace CalendarSyncPlus.SyncEngine
                     {
                         //No parent entry is found, delete it
                         sourceAppointment = sourceList.FirstOrDefault(t =>
-                            CompareAppointments(destAppointment, t, addDescription, addReminders,
+                            CompareAppointments(destAppointment, t, true, addReminders,
                                 addAttendeesToDescription));
                         if (sourceAppointment == null)
                         {

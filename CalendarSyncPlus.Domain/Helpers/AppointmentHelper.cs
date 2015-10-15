@@ -15,20 +15,24 @@ namespace CalendarSyncPlus.Domain.Helpers
             return String.Format("{0} <{1}>", attendee.Name, attendee.Email);
         }
 
-        public static string GetDescriptionData(this Appointment calendarAppointment, bool addDescription,
-            bool addAttendees)
+
+        // [CFL] remove the 'addDescription' & 'addAttendees' options
+        public static string GetDescriptionData(this Appointment calendarAppointment, bool addAttendeesToDesc)
         {
-            if (!addAttendees)
+            if (!addAttendeesToDesc)
             {
-                return calendarAppointment.Description;
+                //[CFL] remove description
+                return "";
+                //return calendarAppointment.Description;
             }
 
             var additionDescription = new StringBuilder(string.Empty);
-            if (addDescription)
+            //[CFL] remove description
+            /*if (addDescription)
             {
                 var description = TrimDescription(calendarAppointment.Description);
                 additionDescription.Append(description);
-            }
+            }*/
             
             //Start Header
             var attendeesDescription = calendarAppointment.GetAttendeesData();
